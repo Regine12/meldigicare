@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Meli — A Digital Care Package</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="" crossorigin="anonymous" />
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-grid">
+      <h1 class="title">For Meli Imelda</h1>
+      <p class="subtitle">Happy Birthday — a small digital care package, made with a decade of memories and a lot of love.</p>
+      <div id="countdown" class="countdown" aria-live="polite" title="Countdown to Meli's birthday">
+        <div class="countdown-item"><span id="cd-days">--</span><small>Days</small></div>
+        <div class="countdown-item"><span id="cd-hours">--</span><small>Hours</small></div>
+        <div class="countdown-item"><span id="cd-mins">--</span><small>Minutes</small></div>
+        <div class="countdown-item"><span id="cd-secs">--</span><small>Seconds</small></div>
+      </div>
+      <nav class="icon-nav">
+        <a href="#playlist" title="Curated Soundtrack"><i class="fa-solid fa-music"></i></a>
+        <a href="#map" title="Map of Adventures"><i class="fa-solid fa-map-location-dot"></i></a>
+        <a href="#jokes" title="Inside Jokes"><i class="fa-solid fa-face-laugh"></i></a>
+        <a href="#timeline" title="Timeline"><i class="fa-solid fa-clock"></i></a>
+        <a href="#photos" title="Photos"><i class="fa-solid fa-image"></i></a>
+        <a href="#letter" title="Letter"><i class="fa-solid fa-envelope"></i></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="playlist" class="card">
+      <h2><i class="fa-solid fa-music"></i> Curated Soundtrack</h2>
+      <p class="muted">Add songs and write a personal memory or reason for each selection. Songs are saved locally in your browser.</p>
+
+      <form id="song-form" class="row">
+        <input id="song-title" placeholder="Song title (placeholder if unknown)" required />
+        <input id="song-artist" placeholder="Artist (optional)" />
+        <input id="song-url" placeholder="(optional) direct audio URL or link (Spotify/YouTube)" />
+        <textarea id="song-memory" placeholder="Why this song? A memory, a thought, a line you love..." rows="2"></textarea>
+        <button type="submit" class="btn primary">Add song</button>
+      </form>
+
+      <div id="playlist-list"></div>
+
+      <!-- Suggested soundtrack panel -->
+      <div id="suggested-soundtrack" class="card" style="margin-top:16px;">
+        <h3 style="margin:6px 0 12px">Suggested Soundtrack</h3>
+        <p class="muted">Click any suggestion to add it to your playlist and write a memory.</p>
+        <div id="suggested-list" class="list"></div>
+      </div>
+    </section>
+
+    <section id="map" class="card">
+      <h2><i class="fa-solid fa-map-location-dot"></i> Map of Adventures</h2>
+      <p class="muted">Click the map to add a place you'd both like to visit or a spot with a memory. Add a title and a short note for each pin.</p>
+      <div id="map-canvas"></div>
+      <div class="map-legend">
+        <button id="export-pins" class="btn">Export pins</button>
+        <button id="clear-pins" class="btn danger">Clear pins</button>
+      </div>
+      <div id="travel-list" class="travel-list muted" aria-hidden="false" style="margin-top:12px"></div>
+    </section>
+
+    <section id="jokes" class="card">
+      <h2><i class="fa-solid fa-face-laugh"></i> Inside Jokes & Quotes</h2>
+      <p class="muted">Add short inside jokes, favorite quotes, or little reminders. Leave placeholders if needed.</p>
+      <form id="joke-form" class="row">
+        <input id="joke-text" placeholder="Write an inside joke or quote" required />
+        <button class="btn">Add</button>
+      </form>
+      <ul id="joke-list" class="list"></ul>
+    </section>
+
+    <section id="timeline" class="card">
+      <h2><i class="fa-solid fa-clock"></i> A 10-year thread</h2>
+      <p class="muted">Sketch a timeline of moments — graduation, trips, hilarious mishaps. Replace placeholders with real dates and memories.</p>
+      <ol id="timeline-list" class="timeline">
+        <li>
+          <strong>Year</strong> — <em>Event placeholder: e.g., "Met at school, became inseparable"</em>
+        </li>
+        <li>
+          <strong>Year</strong> — <em>Event placeholder: e.g., "Graduated together"</em>
+        </li>
+        <li>
+          <strong>Year</strong> — <em>...more memories...</em>
+        </li>
+      </ol>
+    </section>
+
+    <section id="photos" class="card">
+      <h2><i class="fa-solid fa-image"></i> Photo & GIF carousel</h2>
+      <p class="muted">Upload a few photos or GIFs to build a carousel. They are stored in your browser locally.</p>
+      <div class="carousel">
+        <button id="prev-photo" class="btn">‹</button>
+        <div id="carousel-stage" class="carousel-stage"></div>
+        <button id="next-photo" class="btn">›</button>
+      </div>
+      <div style="margin-top:12px" class="row">
+        <input id="photo-input" type="file" accept="image/*" />
+        <button id="clear-photos" class="btn danger">Clear photos</button>
+      </div>
+    </section>
+
+    <section id="letter" class="card">
+      <h2><i class="fa-solid fa-envelope"></i> A Letter for Meli</h2>
+      <p class="muted">Edit this letter freely. When ready, export a styled PDF to print or share.</p>
+      <div id="letter-editor" contenteditable="true" class="letter-editor">
+        <h3>Dear Meli,</h3>
+        <p>Roses are red,</p>
+        <p>Violets are blue,</p>
+        <p>I'm truly blessed I met someone like you.</p>
+        <p>From the day we met to every crazy memory since, you have been my constant. You are brilliant, kind, and always believe in me — I love you so much. Happy 25th birthday (21st May 2026). — With all my love.</p>
+        <p style="margin-top:14px"><em>PS: Edit this message — your personal note will be saved locally.</em></p>
+      </div>
+      <div class="row" style="margin-top:12px">
+        <button id="save-letter" class="btn primary">Save</button>
+        <button id="export-pdf" class="btn">Export PDF</button>
+        <button id="reset-letter" class="btn danger">Reset</button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Made for Meli • Happy 25th — 21st May 2026</p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <!-- html2pdf for PDF export of the letter -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
