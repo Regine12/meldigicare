@@ -152,13 +152,17 @@ input, textarea {
 .timeline-item:nth-child(even) { align-self: flex-end; text-align: left; }
 
 .timeline-item::after {
-  content: '✨';
+  content: '\f54b'; /* Font Awesome 'arrow-turn-down' (a curving arrow) */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900; 
+  color: var(--accent-purple); 
   position: absolute;
   top: 20px;
-  width: 32px; height: 32px;
+  width: 32px; 
+  height: 32px;
   background: #fff;
   border-radius: 50%;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 0 10px rgba(0,0,0,0.12);
   display: flex;
   align-items: center;
   justify-content: center;

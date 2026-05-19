@@ -10,7 +10,7 @@ const songForm = document.getElementById('song-form');
 const playlistList = document.getElementById('playlist-list');
 
 let songs = store.get('meli_songs_final', [
-  {title: 'Ta meilleure amie', artist: 'Lorie', url: 'https://open.spotify.com/intl-fr/track/4FL6ttDXeXjgxXLII24wEX?si=4b9bf8b20dd441e9', memory: 'Our anthem! (PS: swap this with the real direct link from Spotify)'}
+  {title: 'Ta meilleure amie', artist: 'Lorie', url: 'https://open.spotify.com/intl-fr/track/4FL6ttDXeXjgxXLII24wEX?si=4b9bf8b20dd441e9', memory: 'Our anthem!'}
 ]);
 
 function renderSongs() {

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Meli — A Digital Care Package</title>
+  <title>Meli T Imelda</title>
 
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -43,31 +43,23 @@
       <div class="hero-frame">
         <img src="pictures/Mel with 25 numbers2.jpg" alt="Imelda - The Birthday Girl">
       </div>
-      <p style="margin-top: 15px; font-weight: 600; color: var(--accent-purple);">Happy 25th Birthday, Imelda! ✨</p>
+      <p style="margin-top: 15px; font-weight: 600; color: var(--accent-purple);"><i class="fa-solid fa-star" aria-hidden="true" style="margin-right:8px;color:var(--accent-orange);"></i>Happy 25th Birthday, Imelda!</p>
     </section>
 
     <section id="playlist" class="card">
       <h2><i class="fa-solid fa-music"></i> Curated Soundtrack</h2>
       <!--<p class="muted">Add songs and write a personal memory or reason for each selection. Songs are saved locally in your browser.</p>-->
 
-      <form id="song-form" class="row">
+      <div id="playlist-list"></div>
+      <div id="player-embed" class="player-embed"></div>
+
+      <form id="song-form" class="row" style="margin-top:14px">
         <input id="song-title" placeholder="Song title (placeholder if unknown)" required />
         <input id="song-artist" placeholder="Artist (optional)" />
         <input id="song-url" placeholder="(optional) direct audio URL or link (Spotify/YouTube)" />
         <textarea id="song-memory" placeholder="Why this song? A memory, a thought, a line you love..." rows="2"></textarea>
         <button type="submit" class="btn primary">Add song</button>
       </form>
-
-      <div id="playlist-list"></div>
-      <div id="player-embed" class="player-embed"></div>
-
-      <!-- Suggested soundtrack panel -->
-      <!-- <div id="suggested-soundtrack" class="card" style="margin-top:16px;">
-        <h3 style="margin:6px 0 12px">Suggested Soundtrack</h3>
-        <p class="muted">Click any suggestion to add it to your playlist and write a memory.</p>
-        <div id="suggested-list" class="list"></div> -->
-        
-      </div>
     </section>
 
     <section id="map" class="card">
@@ -84,11 +76,11 @@
     <section id="jokes" class="card">
       <h2><i class="fa-solid fa-face-laugh"></i> Inside Jokes & Quotes</h2>
       <!-- <p class="muted">Add short inside jokes, favorite quotes, or little reminders. Leave placeholders if needed.</p> -->
-      <form id="joke-form" class="row">
+      <ul id="joke-list" class="list"></ul>
+      <form id="joke-form" class="row" style="margin-top:12px">
         <input id="joke-text" placeholder="Write an inside joke or quote" required />
         <button class="btn">Add</button>
       </form>
-      <ul id="joke-list" class="list"></ul>
     </section>
 
     <section id="timeline" class="card">
@@ -114,9 +106,6 @@
 
     <section id="photos" class="card">
       <h2><i class="fa-solid fa-image"></i> Photo & GIF carousel</h2>
-      <div class="row" style="margin-bottom:10px;align-items:center">
-        <button id="import-images-btn" class="btn">Import project images</button>
-      </div>
       <div id="balloon-photos" style="margin-bottom:10px"></div>
       <div class="carousel">
         <button id="prev-photo" class="btn">‹</button>
@@ -126,10 +115,6 @@
       <div class="carousel-controls" style="margin-top:10px;display:flex;align-items:center;gap:10px">
         <button id="toggle-autoplay" class="btn">Autoplay</button>
         <div id="thumbnails" class="thumbnails" aria-hidden="false"></div>
-      </div>
-      <div style="margin-top:12px" class="row">
-        <input id="photo-input" type="file" accept="image/*" />
-        <button id="clear-photos" class="btn danger">Clear photos</button>
       </div>
     </section>
 
