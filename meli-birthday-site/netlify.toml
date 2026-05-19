@@ -1,0 +1,13 @@
+[build]
+  # No build command (static site)
+  command = ""
+  publish = "."
+
+[functions]
+  directory = "netlify/functions"
+
+# Optional: set a simple health check for Netlify to know the site root
+[[redirects]]
+  from = "/"
+  to = "/index.html"
+  status = 200
