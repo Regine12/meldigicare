@@ -15,10 +15,11 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
   <header class="site-header">
     <div class="container header-grid">
-      <h1 class="title">For Meli Imelda</h1>
-      <p class="subtitle">Happy Birthday — a small digital care package, made with a decade of memories and a lot of love.</p>
+      <h1 class="title"> Meli Imelda</h1>
+      <p class="subtitle">Happy Birthday dearest - made with a decade of memories and a lot of love.</p>
       <div id="countdown" class="countdown" aria-live="polite" title="Countdown to Meli's birthday">
         <div class="countdown-item"><span id="cd-days">--</span><small>Days</small></div>
         <div class="countdown-item"><span id="cd-hours">--</span><small>Hours</small></div>
@@ -37,9 +38,17 @@
   </header>
 
   <main class="container">
+
+    <section id="featured-pic" style="text-align: center; margin-bottom: 40px;">
+      <div class="hero-frame">
+        <img src="pictures/Mel with 25 numbers2.jpg" alt="Imelda - The Birthday Girl">
+      </div>
+      <p style="margin-top: 15px; font-weight: 600; color: var(--accent-purple);">Happy 25th Birthday, Imelda! ✨</p>
+    </section>
+
     <section id="playlist" class="card">
       <h2><i class="fa-solid fa-music"></i> Curated Soundtrack</h2>
-      <p class="muted">Add songs and write a personal memory or reason for each selection. Songs are saved locally in your browser.</p>
+      <!--<p class="muted">Add songs and write a personal memory or reason for each selection. Songs are saved locally in your browser.</p>-->
 
       <form id="song-form" class="row">
         <input id="song-title" placeholder="Song title (placeholder if unknown)" required />
@@ -50,18 +59,20 @@
       </form>
 
       <div id="playlist-list"></div>
+      <div id="player-embed" class="player-embed"></div>
 
       <!-- Suggested soundtrack panel -->
-      <div id="suggested-soundtrack" class="card" style="margin-top:16px;">
+      <!-- <div id="suggested-soundtrack" class="card" style="margin-top:16px;">
         <h3 style="margin:6px 0 12px">Suggested Soundtrack</h3>
         <p class="muted">Click any suggestion to add it to your playlist and write a memory.</p>
-        <div id="suggested-list" class="list"></div>
+        <div id="suggested-list" class="list"></div> -->
+        
       </div>
     </section>
 
     <section id="map" class="card">
       <h2><i class="fa-solid fa-map-location-dot"></i> Map of Adventures</h2>
-      <p class="muted">Click the map to add a place you'd both like to visit or a spot with a memory. Add a title and a short note for each pin.</p>
+      <p class="muted">Click the map to add a place we could both visit or a spot with a memory (Add a title and a short note for each pin) </p>
       <div id="map-canvas"></div>
       <div class="map-legend">
         <button id="export-pins" class="btn">Export pins</button>
@@ -72,7 +83,7 @@
 
     <section id="jokes" class="card">
       <h2><i class="fa-solid fa-face-laugh"></i> Inside Jokes & Quotes</h2>
-      <p class="muted">Add short inside jokes, favorite quotes, or little reminders. Leave placeholders if needed.</p>
+      <!-- <p class="muted">Add short inside jokes, favorite quotes, or little reminders. Leave placeholders if needed.</p> -->
       <form id="joke-form" class="row">
         <input id="joke-text" placeholder="Write an inside joke or quote" required />
         <button class="btn">Add</button>
@@ -81,28 +92,40 @@
     </section>
 
     <section id="timeline" class="card">
-      <h2><i class="fa-solid fa-clock"></i> A 10-year thread</h2>
-      <p class="muted">Sketch a timeline of moments — graduation, trips, hilarious mishaps. Replace placeholders with real dates and memories.</p>
-      <ol id="timeline-list" class="timeline">
-        <li>
-          <strong>Year</strong> — <em>Event placeholder: e.g., "Met at school, became inseparable"</em>
-        </li>
-        <li>
-          <strong>Year</strong> — <em>Event placeholder: e.g., "Graduated together"</em>
-        </li>
-        <li>
-          <strong>Year</strong> — <em>...more memories...</em>
-        </li>
-      </ol>
+      <h2><i class="fa-solid fa-clock"></i> A Walk Down Memory Lane</h2>
+      <p class="muted">A timeline of moments (graduation, trips, hilarious mishaps)</p>
+      <div id="timeline-list" class="timeline">
+        <div class="timeline-item"><div class="timeline-year">2026</div><div class="timeline-content"><strong>CyberMACS Msc Students</strong><div class="muted">Across the World, but still as inseparable</div></div></div>
+        <div class="timeline-item"><div class="timeline-year">2025</div><div class="timeline-content"><strong>CyberMACS Msc Students</strong><div class="muted">Having fun living together</div></div></div>
+        <div class="timeline-item"><div class="timeline-year">2024</div><div class="timeline-content"><strong>Got a scholarship together</strong><div class="muted">Leaving home for the first time, taking a plane and travelling ..</div></div></div>
+        <div class="timeline-item"><div class="timeline-year">2023</div><div class="timeline-content"><strong>A degree hotter</strong><div class="muted">Graduated together, B.Eng</div></div></div>
+        <div class="timeline-item"><div class="timeline-year">2022</div><div class="timeline-content"><strong>Internship</strong><div class="muted">Got to work together in a professional setting</div></div></div>
+        <div class="timeline-item"><div class="timeline-year">2021</div><div class="timeline-content"><strong>Team Work makes the dream work</strong><div class="muted">We built something meaningful and beautiful (and made great relationships)</div></div></div>
+        <div class="timeline-item"><div class="timeline-year">2020</div><div class="timeline-content"><strong>Big girls</strong><div class="muted">Starting together the University experience, and always there for each other</div></div></div>
+        <div class="timeline-item"><div class="timeline-year">2019</div><div class="timeline-content"><strong>The end of the beginning</strong><div class="muted">Making choices for the future, life: apparently, coincidentally similar ones</div></div></div>
+        <div class="timeline-item"><div class="timeline-year">2018</div><div class="timeline-content"><strong>Love, Hardwork, Experience and other things</strong><div class="muted">Evolving relationships, and planning the rest, hopefully it's beautiful too?</div></div></div>
+        <div class="timeline-item"><div class="timeline-year">2017</div><div class="timeline-content"><strong>First big success</strong><div class="muted">Despite the challenges, a triumphant academic victory — the start of a shared fate</div></div></div>
+        <div class="timeline-item"><div class="timeline-year">2016</div><div class="timeline-content"><strong>Met at school</strong><div class="muted">A conversation that started a lifetime bond. (PS: do you know now, how long it takes to boil an egg? haha)</div></div></div>
+        <div class="timeline-item"><div class="timeline-year">2015</div><div class="timeline-content"><strong>Rivals by skills</strong><div class="muted">We only knew the other was smart enough to have vaguely the same number of prizes at the Prize award ceremony</div></div></div>
+        <div class="timeline-item"><div class="timeline-year">2014</div><div class="timeline-content"><strong>"I've heard that name before..."</strong><div class="muted">Birds of the same feather, flock together?</div></div></div>
+        <div class="timeline-item"><div class="timeline-year">2013</div><div class="timeline-content"><strong>Just a Newcomer</strong><div class="muted">Didn't know I couldn't wait to know about you!</div></div></div>
+      </div>
     </section>
 
     <section id="photos" class="card">
       <h2><i class="fa-solid fa-image"></i> Photo & GIF carousel</h2>
-      <p class="muted">Upload a few photos or GIFs to build a carousel. They are stored in your browser locally.</p>
+      <div class="row" style="margin-bottom:10px;align-items:center">
+        <button id="import-images-btn" class="btn">Import project images</button>
+      </div>
+      <div id="balloon-photos" style="margin-bottom:10px"></div>
       <div class="carousel">
         <button id="prev-photo" class="btn">‹</button>
         <div id="carousel-stage" class="carousel-stage"></div>
         <button id="next-photo" class="btn">›</button>
+      </div>
+      <div class="carousel-controls" style="margin-top:10px;display:flex;align-items:center;gap:10px">
+        <button id="toggle-autoplay" class="btn">Autoplay</button>
+        <div id="thumbnails" class="thumbnails" aria-hidden="false"></div>
       </div>
       <div style="margin-top:12px" class="row">
         <input id="photo-input" type="file" accept="image/*" />
@@ -132,7 +155,7 @@
 
   <footer class="site-footer">
     <div class="container">
-      <p>Made for Meli • Happy 25th — 21st May 2026</p>
+      <p>Made for Meli with 🤍 Happy 25th • 21st May 2026</p>
     </div>
   </footer>
 
