@@ -74,10 +74,10 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 
 
 let pins = store.get('meli_pins_skopje', [
   {lat: 41.9981, lng: 21.4254, title: 'Skopje, North Macedonia', note: 'Where you are shining right now! ✨'},
-  {lat: 51.1657, lng: 10.4515, title: 'Germany', note: 'Where I am, sending you all my love.'},
-  {lat: 52.3702, lng: 4.8952, title: 'Netherlands (Amsterdam)', note: 'Imagine canals and bikes — visit together.'},
-  {lat: 56.1304, lng: -106.3468, title: 'Canada', note: 'Dream: someday living in the same city again.'},
-  {lat: 39.92077, lng: 32.85411, title: 'Turkey (Ankara)', note: 'Where we celebrated our scholarship acceptance.'}
+  {lat: 51.1657, lng: 10.4515, title: 'Germany', note: 'Where I am, sending you all my love'},
+  {lat: 52.3702, lng: 4.8952, title: 'Netherlands (Amsterdam)', note: 'Imagine canals and bikes; visit together and get to work in the same company :)'},
+  {lat: 56.1304, lng: -106.3468, title: 'Canada', note: 'Dream: someday, in a distant future, living in the same city again'},
+  {lat: 39.92077, lng: 32.85411, title: 'Turkey', note: 'Where we celebrated our scholarship acceptance, where the journey abroad began'}
 ]);
 
 function renderPins() {
