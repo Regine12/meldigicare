@@ -113,8 +113,8 @@ renderPins();
 // --- JOKES & QUOTES ---
 const jokeForm = document.getElementById('joke-form');
 let jokes = store.get('meli_jokes_final', [
-  "Knowing I'm the one person you're allowed to fart in front of! 😂",
-  "PS: Do you know how long it takes to boil an egg now? haha"
+  "Knowing I'm the one person you're allowed to fart in front of 😂",
+  "If you know where you are going to, you'll know how to get there"
 ]);
 
 function renderJokes() {
