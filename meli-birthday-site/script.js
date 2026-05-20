@@ -113,22 +113,24 @@ renderPins();
 // --- JOKES & QUOTES ---
 const jokeForm = document.getElementById('joke-form');
 let jokes = store.get('meli_jokes_final', [
-  "Knowing I'm the one person you're allowed to fart in front of 😂",
-  "If you know where you are going to, you'll know how to get there"
+  "Knowing I'm the one (or one of, lol) person(s) you're allowed to fart in front of 😂",
+  '<blockquote><em>“If you know where you are going to, you\'ll know how to get there”</em></blockquote>'
 ]);
 
 function renderJokes() {
   const jokeList = document.getElementById('joke-list');
   jokeList.innerHTML = '';
   jokes.forEach((j, i) => {
+    // allow basic HTML for a joke if it starts with '<' (eg. <em>...</em>), otherwise escape
+    const content = String(j).trim().startsWith('<') ? j : escapeHtml(j);
     jokeList.innerHTML += `<li style="display:flex; justify-content:space-between; align-items:center; background:#fff; margin-bottom:8px;">
-      <span style="flex:1;">${escapeHtml(j)}</span> 
+      <span style="flex:1;">${content}</span>
       <button class="btn danger" style="padding: 4px 8px; font-size:12px; margin-left:10px;" onclick="delJoke(${i})">X</button>
     </li>`;
   });
 }
 window.delJoke = (i) => { jokes.splice(i,1); store.set('meli_jokes_final', jokes); renderJokes(); };
-jokeForm.addEventListener('submit', e => { e.preventDefault(); jokes.unshift(document.getElementById('joke-text').value); store.set('meli_jokes_final', jokes); jokeForm.reset(); renderJokes(); });
+jokeForm.addEventListener('submit', e => { e.preventDefault(); const v = document.getElementById('joke-text').value; if (!v) return; jokes.unshift(v); store.set('meli_jokes_final', jokes); jokeForm.reset(); renderJokes(); });
 renderJokes();
 
 // --- EXACT IMAGE FILE LOGIC ---
