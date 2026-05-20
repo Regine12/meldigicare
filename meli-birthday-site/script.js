@@ -239,9 +239,9 @@ initCountdown();
 // --- LETTER EDITOR WITH THE NEW POEM ---
 const defaultLetter = `<h3>Dear Imelda,</h3>
 <p>Roses are red, violets are blue,<br>
-I am truly blessed to have met someone like you.<br>
+I am truly blessed to have met someone like you<br>
 From the day we met, till forever and always too,<br>
-We’ll stay the best of friends, going through the ugly and the good.</p>
+We’ll stay the best of friends, going through the ugly and the good</p>
 
 <p>No matter how crazy life gets, or how much of a mess it can be,<br>
 I know I can count on you, and you can always count on me ;) </p>
@@ -252,8 +252,9 @@ I know I can count on you, and you can always count on me ;) </p>
 <p>Despite the distance, you are my constant 🙈 </p>
 
 <p>I wish I could always show in acts how much I love, care, and cherish you </p> 
-<p>I love you, Imelda.</p>
-<p>With all my love,<br>Regine</p>`;
+<p>I love you, Imelda❤️</p>
+<p>PS: Cheers to 25 years of you 🥂 <br></p>
+<p>With all my love,<br><h3>Regine</h3></p>`;
 
 const letterEditor = document.getElementById('letter-editor');
 if (store.get('meli_letter_final')) {
